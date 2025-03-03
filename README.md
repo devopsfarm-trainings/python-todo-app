@@ -1,2 +1,6 @@
 # python-todo-app
-TODO app written in python
+
+
+## Contributors
+@Devopsfarmer
+@HarshitTak
