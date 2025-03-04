@@ -1,6 +1,6 @@
 # python-todo-app
 
-# Steps For Running Frontend Code 
+# Steps for Running Frontend Code 
 
 # Flask Frontend Project
 
