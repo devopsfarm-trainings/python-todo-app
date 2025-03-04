@@ -14,7 +14,14 @@ function fetchUsers() {
         })
         .catch(error => console.error("Error fetching users:", error));
 }
-
+function fetchData() {
+    fetch("/api/data")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("output").textContent = data.message;
+        })
+        .catch(error => console.error("Error fetching data:", error));
+}
 function addUser() {
     let name = document.getElementById("username").value;
     fetch("/api/users", {

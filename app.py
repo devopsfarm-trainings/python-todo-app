@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 from models import db, User
@@ -14,6 +14,13 @@ db.init_app(app)
 with app.app_context():
     db.create_all()
 
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/api/data")
+def get_data():
+    return jsonify({"message": "Hello from Flask!"})
 # Fetch all users
 @app.route("/api/users", methods=["GET"])
 def get_users():
@@ -28,6 +35,7 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"message": "User added successfully!", "user": new_user.to_dict()}), 201
+
 
 if __name__ == "__main__":
     app.run(debug=True)
