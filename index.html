@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API with SQLAlchemy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Flask API with Database</h1>
+
+    <input type="text" id="username" placeholder="Enter name">
+    <button onclick="addUser()">Add User</button>
+    <button onclick="fetchUsers()">Get Users</button>
+
+    <h2>Users List</h2>
+    <ul id="userList"></ul>
+
+    <script>
+        function fetchUsers() {
+            fetch("/api/users")
+                .then(response => response.json())
+                .then(users => {
+                    let userList = document.getElementById("userList");
+                    userList.innerHTML = "";
+                    users.forEach(user => {
+                        let li = document.createElement("li");
+                        li.textContent = user.name;
+                        userList.appendChild(li);
+                    });
+                })
+                .catch(error => console.error("Error fetching users:", error));
+        }
+
+        function addUser() {
+            let name = document.getElementById("username").value;
+            if (!name) {
+                alert("Please enter a name.");
+                return;
+            }
+            fetch("/api/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name })
+            })
+            .then(response => response.json())
+            .then(() => {
+                fetchUsers();
+                document.getElementById("username").value = "";
+            })
+            .catch(error => console.error("Error adding user:", error));
+        }
+    </script>
+</body>
+</html>
+
