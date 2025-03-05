@@ -9,6 +9,9 @@
 <body>
     <h1>Flask Frontend</h1>
     <button onclick="fetchData()">Get Data</button>
+    <button onclick="get_user()">List Users</button>
+    <button onclick="add_user()">Add Users</button>
+    <!-- <button onclick="fetchData()">Delete Users</button> -->
     <p id="output"></p>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
