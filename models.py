@@ -29,6 +29,8 @@ class User(db.Model):
         """
         return {"id": self.id, "name": self.name}
 
+    def __repr__(self):
+    """Returns a string representation of the User object."""
+    return f"<User {self.name}>"
 # Pylint suppression for "too few public methods" if necessary:
 # pylint: disable=too-few-public-methods
-
