@@ -6,7 +6,6 @@ This app provides APIs for:
 - Deleting a user
 - Rendering a template
 """
-
 from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
