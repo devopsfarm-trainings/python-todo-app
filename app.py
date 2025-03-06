@@ -1,11 +1,10 @@
-"""
-This is a Flask application that provides APIs for user management.
+"""Flask application for user management.
 
-Features:
-- Fetch all users
-- Add a new user
-- Delete a user
-- Serve an HTML template
+This app provides APIs for:
+- Fetching users
+- Adding a user
+- Deleting a user
+- Rendering a template
 """
 
 from flask import Flask, jsonify, request, render_template
