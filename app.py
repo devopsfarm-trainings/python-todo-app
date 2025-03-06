@@ -1,3 +1,13 @@
+"""
+This is a Flask application that provides APIs for user management.
+
+Features:
+- Fetch all users
+- Add a new user
+- Delete a user
+- Serve an HTML template
+"""
+
 from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -50,3 +60,4 @@ def delete_user(user_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
