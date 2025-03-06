@@ -17,3 +17,10 @@ class User(db.Model):
         """Returns the full name of the user."""
         return {"id": self.id, "name": self.name}
 
+
+
+
+
+
+
+
