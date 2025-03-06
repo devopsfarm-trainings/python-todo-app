@@ -26,6 +26,9 @@ class User(db.Model):
 
         Returns:
             dict: A dictionary representation of the user.
-       """ 
+        """
         return {"id": self.id, "name": self.name}
+
+# Pylint suppression for "too few public methods" if necessary:
+# pylint: disable=too-few-public-methods
 
