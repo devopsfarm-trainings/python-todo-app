@@ -26,20 +26,25 @@ with app.app_context():
 
 @app.route("/")
 def index():
+    """Render the home page."""
     return render_template("index.html")
 
 @app.route("/api/data")
 def get_data():
+    """Return a JSON response with a sample message."""
     return jsonify({"message": "Hello from Flask!"})
+
 # Fetch all users
 @app.route("/api/users", methods=["GET"])
 def get_users():
+    """Retrieve all users from the database."""
     users = User.query.all()
     return jsonify([user.to_dict() for user in users])
 
 # Add a new user
 @app.route("/api/users", methods=["POST"])
 def add_user():
+    """Add a new user to the database."""
     data = request.json
     new_user = User(name=data["name"])
     db.session.add(new_user)
@@ -49,6 +54,7 @@ def add_user():
 # Delete user
 @app.route("/api/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
+    """Delete a user by their ID."""
     user = User.query.get(user_id)
     if not user:
         return jsonify({"error": "User not found"}), 404
@@ -60,4 +66,3 @@ def delete_user(user_id):
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
