@@ -26,6 +26,6 @@ class User(db.Model):
 
         Returns:
             dict: A dictionary representation of the user.
-        """
+        
         return {"id": self.id, "name": self.name}
 
